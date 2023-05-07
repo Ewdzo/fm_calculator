@@ -17,7 +17,7 @@ export const calculateInputs = (type) => {
   const inputs = document.querySelectorAll(`[id^="${type}"]`);
   const values = Array.from(inputs, inputs => inputs.value);
 
-  if(type == "simples"){
+  if(type === "simples"){
     if(!values[0]) inputs[0].value = Number(values[2] / (values[3] * values[4])).toFixed(2); 
   
     if(!values[2]) inputs[2].value = Number(values[0] * values[3] * values[4]).toFixed(2); 
