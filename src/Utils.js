@@ -14,7 +14,7 @@ export const newInput = (id, type) => {
 }
 
 export const calculateInputs = (type) => {
-  const inputs = document.querySelectorAll(`[id^="${type}"]`);
+  const inputs = document.querySelectorAll(`input[id^="${type}"]`);
   const values = Array.from(inputs, inputs => inputs.value);
 
   if(type === "simples"){

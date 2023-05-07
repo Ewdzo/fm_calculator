@@ -1,11 +1,11 @@
 import './App.css';
-import SimpleInterest from './components/simpleInterest/simpleInterest';
+import InterestCalculator from './components/InterestCalculator/InterestCalculator';
 
 function App() {
   return (
     <div className="App">
       <body className="App-body">
-        <SimpleInterest />
+        <InterestCalculator name="Juros Simples" type="simples"/>
       </body>
     </div>
   );
