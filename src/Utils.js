@@ -13,7 +13,7 @@ export const newInput = (id, type) => {
     )
 }
 
-export const calculateInputs = (type) => {
+export const calculateInterest = (type) => {
   const inputs = document.querySelectorAll(`input[id^="${type}"]`);
   const values = Array.from(inputs, inputs => Number(inputs.value));
 
