@@ -1,6 +1,6 @@
 import './App.css';
 import InterestCalculator from './components/InterestCalculator/InterestCalculator';
-import TaxCalculator from './components/taxCalculator/TaxCalculator';
+import TaxCalculator from './components/taxCalculator/taxCalculator';
 
 function App() {
   return (
