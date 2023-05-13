@@ -46,3 +46,16 @@ export const calculateInterest = (type) => {
     if(!montante) inputs[1].value = Number(Number(inputs[0].value) + Number(inputs[2].value)).toFixed(2);
   }
 }
+
+export const calculateTax = (type) => {
+  const inputs = document.querySelectorAll(`input[id^="${type}"]`);
+  const values = Array.from(inputs, inputs => Number(inputs.value));
+
+  const taxaEfetiva = values[0];
+  const tempo = values[1];
+  const taxa = values[2];
+
+  if(!taxaEfetiva) inputs[0].value = (taxa / (1 - (taxa * tempo))).toFixed(6); 
+
+  if(!taxa) inputs[2].value = (taxaEfetiva / (1 + (taxaEfetiva * tempo))).toFixed(6); 
+}

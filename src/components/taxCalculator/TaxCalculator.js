@@ -1,4 +1,4 @@
-import { calculateInterest, newInput } from '../../Utils';
+import { calculateTax, newInput } from '../../Utils';
 import './TaxCalculator.css';
 
 const TaxCalculator = (props) => {
@@ -10,7 +10,7 @@ const TaxCalculator = (props) => {
       <div id={props.type +"-input-container"}>
         {inputValues.map((value) => newInput(value, props.type))}
       </div>
-      <button onClick={() => calculateInterest(props.type)}>Calcular</button>
+      <button onClick={() => calculateTax(props.type)}>Calcular</button>
     </div>
   );
 }
