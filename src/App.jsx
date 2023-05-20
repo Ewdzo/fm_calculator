@@ -8,7 +8,7 @@ function App() {
       <body className="App-body">
         <InterestCalculator name="Juros Simples" type="simples"/>
         <InterestCalculator name="Juros Compostos" type="composto"/>
-        <TaxCalculator name="Taxa Efetiva" type="taxa-efetiva"/>
+        <TaxCalculator name="Taxa Efetiva" type="taxa-efetiva" inputs={["taxaEfetiva", "tempo", "taxa"]}/>
       </body>
     </div>
   );
