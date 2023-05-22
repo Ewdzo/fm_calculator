@@ -9,6 +9,7 @@ function App() {
         <InterestCalculator name="Juros Simples" type="simples"/>
         <InterestCalculator name="Juros Compostos" type="composto"/>
         <TaxCalculator name="Taxa Efetiva" type="taxa-efetiva" inputs={["taxaEfetiva", "tempo", "taxa"]}/>
+        <TaxCalculator name="Taxa Proporcional" type="taxa-proporcional" inputs={["taxaProporcional", "tempo", "taxa"]}/>
       </body>
     </div>
   );
