@@ -13,6 +13,22 @@ export const newInput = (id, type) => {
     )
 }
 
+export const newRadio = (id, type, nameRadio) => {
+  id = String(id);
+  const name = id[0].toUpperCase() + id.substring(1);
+  const originalId = id;
+
+  if(type) id = type + "_" + id;
+  
+  return(
+    <div>
+      <label htmlFor={id}>{name}</label>
+      <br/>
+      <input type='radio' name={nameRadio} id={nameRadio+"_" + originalId} value={originalId}></input>
+    </div>
+  )
+}
+
 export const calculateInterest = (type) => {
   const inputs = document.querySelectorAll(`input[id^="${type}"]`);
   const values = Array.from(inputs, inputs => Number(inputs.value));
@@ -51,11 +67,30 @@ export const calculateTax = (type) => {
   const inputs = document.querySelectorAll(`input[id^="${type}"]`);
   const values = Array.from(inputs, inputs => Number(inputs.value));
 
-  const taxaEfetiva = values[0];
-  const tempo = values[1];
-  const taxa = values[2];
+  if(type === "taxa-efetiva"){
+    const taxaEfetiva = values[0];
+    const tempo = values[1];
+    const taxa = values[2];
 
-  if(!taxaEfetiva) inputs[0].value = (taxa / (1 - (taxa * tempo))).toFixed(6); 
+    if(!taxaEfetiva) inputs[0].value = (taxa / (1 - (taxa * tempo))).toFixed(6); 
 
-  if(!taxa) inputs[2].value = (taxaEfetiva / (1 + (taxaEfetiva * tempo))).toFixed(6); 
-}
+    if(!taxa) inputs[2].value = (taxaEfetiva / (1 + (taxaEfetiva * tempo))).toFixed(6); 
+  } 
+  else if(type === "taxa-proporcional"){
+    const taxaProporcional = values[1];
+    const capitalizacao = document.querySelector('input[name="capitalizacaoTaxa"]:checked').value;
+    const tempoTaxaProporcional = document.querySelector('input[name="tempoTaxa"]:checked').value;
+
+    if(capitalizacao === tempoTaxaProporcional) inputs[0].value = taxaProporcional;
+
+    if(tempoTaxaProporcional === "anual"){
+      if(capitalizacao === "mensal") inputs[0].value = (taxaProporcional / 12).toFixed(6);
+
+      if(capitalizacao === "bimestral") inputs[0].value = (taxaProporcional / 6).toFixed(6);
+      
+      if(capitalizacao === "trimestral") inputs[0].value = (taxaProporcional / 4).toFixed(6);
+
+      if(capitalizacao === "semestral") inputs[0].value = (taxaProporcional / 2).toFixed(6);
+    }
+  }
+}               
