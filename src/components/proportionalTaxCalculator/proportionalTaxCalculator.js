@@ -10,11 +10,11 @@ const ProportionalTaxCalculator = (props) => {
       <h1>{props.name}</h1>
       <div id={props.type +"-input-container"}>
         {props.inputs.map((value) => newInput(value, props.type))}
-        <div>
+        <div className='radio-btn'>
           <h4>Capitalizacao Taxa</h4>
           {timeType.map((value) => newRadio(value, props.type, "capitalizacaoTaxa"))}
         </div>
-        <div>
+        <div className='radio-btn'>
           <h4>Tempo Taxa Proporcional</h4>
           {timeType.map((value) => newRadio(value, props.type, "tempoTaxa"))}
         </div>

@@ -1,7 +1,7 @@
 import './App.css';
 import InterestCalculator from './components/InterestCalculator/InterestCalculator';
 import ProportionalTaxCalculator from './components/proportionalTaxCalculator/proportionalTaxCalculator';
-import TaxCalculator from './components/taxCalculator/taxCalculator';
+import TaxCalculator from './components/taxCalculator/TaxCalculator';
 
 function App() {
   return (
