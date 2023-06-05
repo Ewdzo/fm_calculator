@@ -92,5 +92,20 @@ export const calculateTax = (type) => {
 
       if(capitalizacao === "semestral") inputs[0].value = (taxaProporcional / 2).toFixed(6);
     }
+    else if(tempoTaxaProporcional === "semestral"){
+      if(capitalizacao === "mensal") inputs[0].value = (taxaProporcional / 6).toFixed(6);
+
+      if(capitalizacao === "bimestral") inputs[0].value = (taxaProporcional / 3).toFixed(6);
+
+      if(capitalizacao === "trimestral") inputs[0].value = (taxaProporcional / 2).toFixed(6);
+    }
+    else if(tempoTaxaProporcional === "trimestral"){
+      if(capitalizacao === "mensal") inputs[0].value = (taxaProporcional / 3).toFixed(6);
+
+      if(capitalizacao === "bimestral") inputs[0].value = (taxaProporcional / (2/3) ).toFixed(6);
+    }
+    else if(tempoTaxaProporcional === "bimestral"){
+      if(capitalizacao === "mensal") inputs[0].value = (taxaProporcional / 2).toFixed(6);
+    }
   }
 }               
