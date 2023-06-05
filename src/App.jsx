@@ -1,4 +1,5 @@
 import './App.css';
+import AmortizationCalculator from './components/AmortizationCalculator/AmortizationCalculator';
 import InterestCalculator from './components/InterestCalculator/InterestCalculator';
 import ProportionalTaxCalculator from './components/proportionalTaxCalculator/proportionalTaxCalculator';
 import TaxCalculator from './components/taxCalculator/taxCalculator';
@@ -11,6 +12,7 @@ function App() {
         <InterestCalculator name="Juros Compostos" type="composto"/>
         <TaxCalculator name="Taxa Efetiva" type="taxa-efetiva" inputs={["taxaEfetiva", "tempo", "taxa"]}/>
         <ProportionalTaxCalculator name="Taxa Proporcional" type="taxa-proporcional" inputs={["taxa", "taxaProporcional"]}/>
+        <AmortizationCalculator name="Amortizacao" type="amortizacao"/>
       </body>
     </div>
   );

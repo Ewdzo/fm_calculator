@@ -108,4 +108,6 @@ export const calculateTax = (type) => {
       if(capitalizacao === "mensal") inputs[0].value = (taxaProporcional / 2).toFixed(6);
     }
   }
-}               
+}
+
+export const calculateAmortization = (type) => {}
