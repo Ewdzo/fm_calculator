@@ -10,7 +10,8 @@ const AmortizationCalculator = (props) => {
       <div id={props.type +"-input-container"}>
         {inputValues.map((value) => newInput(value, props.type))}
       </div>
-      <button onClick={() => calculateAmortization(props.type)}>Calcular</button>
+      <button onClick={() => calculateAmortization(props.type, props.type+"-result")}>Calcular</button>
+      <table id={props.type+'-result'}></table>
     </div>
   );
 }

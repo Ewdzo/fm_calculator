@@ -110,4 +110,60 @@ export const calculateTax = (type) => {
   }
 }
 
-export const calculateAmortization = (type) => {}
+export const calculateAmortization = (type, tableID) => {
+  const inputs = document.querySelectorAll(`input[id^="${type}"]`);
+  const values = Array.from(inputs, inputs => Number(inputs.value));
+
+  const financiamento = values[0];
+  const taxa = values[1];
+  const tempo = values[2];
+  let saldoDevedor = financiamento;
+ 
+  const table = document.getElementById(tableID);
+  table.innerHTML = '';
+  const firstRow = table.insertRow(-1);
+
+  const firstRowValues = ["Meses", "Saldo Devedor(R$)", "Amortizacao(R$)", "Juros", "Prestacao(R$)"];
+
+  firstRowValues.map((value) => {
+    const newCell = firstRow.insertCell(-1);
+    const newText = document.createTextNode(value);
+    newCell.appendChild(newText);
+  })
+
+  for(let i=0; i <= tempo; i++){
+    const newRow = table.insertRow(-1);
+
+    const timeCell = newRow.insertCell(-1);
+    const debtCell = newRow.insertCell(-1);
+    const amortizationCell = newRow.insertCell(-1);
+    const interestCell = newRow.insertCell(-1);
+    const installmentCell = newRow.insertCell(-1);
+
+    let amortizationText, interest, installment;
+    if(i) amortizationText = document.createTextNode((financiamento / tempo).toFixed(2));
+    else amortizationText = document.createTextNode(0.00);
+    
+    if(i){
+      saldoDevedor = saldoDevedor - (financiamento / tempo);
+      interest = (saldoDevedor + (financiamento / tempo)) * taxa;
+      installment = ((financiamento / tempo) + interest);
+    }
+    else {
+      interest = 0.00;
+      installment = 0.00;
+    }
+
+    const timeText = document.createTextNode(i);
+    const debtText = document.createTextNode(saldoDevedor.toFixed(2));
+    const interestText = document.createTextNode(interest.toFixed(2));
+    const installmentText = document.createTextNode(installment.toFixed(2));
+
+
+    timeCell.appendChild(timeText);
+    debtCell.appendChild(debtText);
+    amortizationCell.appendChild(amortizationText);
+    interestCell.appendChild(interestText);
+    installmentCell.appendChild(installmentText);
+  }
+}
