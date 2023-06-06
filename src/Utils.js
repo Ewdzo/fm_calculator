@@ -167,3 +167,31 @@ export const calculateAmortization = (type, tableID) => {
     installmentCell.appendChild(installmentText);
   }
 }
+
+export const calculateVPL = (type) => {
+  const inputs = document.querySelectorAll(`input[id^="${type}"]`);
+  const values = Array.from(inputs, inputs => Number(inputs.value));
+
+  const investimento = values[0];
+  const taxa = values[1];
+  const tempo = values[2];
+
+  const fluxosDeCaixa = [];
+
+  for(let i=1; i <= tempo; i++){
+    const fluxoDeCaixa = Number(prompt("Insira o Fluxo de Caixa do Ano "+ i +":"));
+    fluxosDeCaixa.push(fluxoDeCaixa.toFixed(2));
+  }
+
+  let somatorioTotal = 0.0, j = 1;
+
+
+  fluxosDeCaixa.map((value) => { 
+    const VPL = value / Math.pow((1+taxa), j);
+    somatorioTotal += VPL;
+    j++;
+  })
+
+  const VPL = (somatorioTotal - investimento).toFixed(2);
+  inputs[3].value = VPL;
+}
