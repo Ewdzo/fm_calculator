@@ -11,7 +11,6 @@ const VPLCalculator = (props) => {
         {inputValues.map((value) => newInput(value, props.type))}
       </div>
       <button onClick={() => calculateVPL(props.type)}>Calcular</button>
-      <table id={props.type+'-result'}></table>
     </div>
   );
 }

@@ -5,10 +5,9 @@ export const newInput = (id, type) => {
     if(type) id = type + "_" + id;
     
     return(
-      <div>
+      <div className= {type + "-data-input"}>
         <label for={id}>{name}</label>
-        <br/>
-        <input type='text' id={id}></input>
+        <input type='number' id={id}></input>
       </div>
     )
 }
@@ -23,7 +22,6 @@ export const newRadio = (id, type, nameRadio) => {
   return(
     <div>
       <label htmlFor={id}>{name}</label>
-      <br/>
       <input type='radio' name={nameRadio} id={nameRadio+"_" + originalId} value={originalId}></input>
     </div>
   )
@@ -123,7 +121,7 @@ export const calculateAmortization = (type, tableID) => {
   table.innerHTML = '';
   const firstRow = table.insertRow(-1);
 
-  const firstRowValues = ["Meses", "Saldo Devedor(R$)", "Amortizacao(R$)", "Juros", "Prestacao(R$)"];
+  const firstRowValues = ["Meses", "SD(R$)", "Amort(R$)", "Juros", "PMT(R$)"];
 
   firstRowValues.map((value) => {
     const newCell = firstRow.insertCell(-1);
